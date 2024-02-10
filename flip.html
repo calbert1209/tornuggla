@@ -14,25 +14,25 @@
   </head>
   <body>
     <template id="static-template">
-      <img class="pikachu" src="./assets/pikachu-static.gif" alt="pikachu" />
+      <img class="pikachu" src="./assets/pineapple-static.gif" alt="pikachu" />
     </template>
     <template id="dancing-template">
-      <img class="pikachu" src="./assets/pikachu.gif" alt="pikachu" />
+      <img class="pikachu" src="./assets/pineapple.gif" alt="pikachu" />
     </template>
     <header id="header">
       <div id="status"></div>
     </header>
     <main class="stage">
       <div id="left">6</div>
-      <div id="center">+</div>
+      <div id="center" style="font-size: 6rem"></div>
       <div id="right">8</div>
     </main>
     <footer>
       <button id="ng-btn" class="primary">NG (x)</button>
       <button id="ok-btn" class="primary">OK (c)</button>
       <button id="reset-btn" class="secondary">RESET (r)</button>
-      <button id="swap-btn" class="secondary">SIGN (-)</button>
+      <button id="swap-btn" class="secondary" style="visibility: hidden;">SIGN (-)</button>
     </footer>
   </body>
-  <script type="module" src="./index.js"></script>
+  <script type="module" src="./flip.js"></script>
 </html>
