@@ -69,7 +69,7 @@ function showQuestion(state) {
     center.innerText = "";
   }
   const templateId = state.isDone ? "dancing-template" : "static-template";
-  const pikachu = document.getElementById(templateId);
+  const character = document.getElementById(templateId);
   const header = document.getElementById("header");
   const fragment = document.createDocumentFragment();
 
@@ -78,8 +78,8 @@ function showQuestion(state) {
   fragment.appendChild(headerCount);
 
   for (let i = 0; i < state.count; i++) {
-    const pikachuClone = pikachu.content.cloneNode(true);
-    fragment.appendChild(pikachuClone);
+    const characterClone = character.content.cloneNode(true);
+    fragment.appendChild(characterClone);
   }
   header.replaceChildren(fragment);
 }
