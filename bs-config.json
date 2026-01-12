@@ -1,3 +1,6 @@
 {
-  "port": 8342
+  "port": 8342,
+  "server": {
+    "baseDir": "poc"
+  }
 }
