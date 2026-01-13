@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { generateTwoDigitQuestion, generateOperator } from '../src/questionGenerator'
+import { generateTwoDigitQuestion, generateOperator } from '../src/models/questionGenerator'
 
 describe('Question Generator', () => {
   it('should generate a question with a >= b', () => {

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { State, Retries } from '../src/game'
-import type { Question } from '../src/game'
+import { State, Retries } from '../src/models/game'
+import type { Question } from '../src/models/game'
 
 describe('Game State', () => {
   let state: State

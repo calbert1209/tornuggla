@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'preact/hooks'
-import { State, Retries } from './game'
-import { generateTwoDigitQuestion } from './questionGenerator'
+import { State, Retries } from '../models/game'
+import { generateTwoDigitQuestion } from '../models/questionGenerator'
 import { Header, Stage, Footer } from './components'
 import './styles.css'
 

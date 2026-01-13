@@ -1,4 +1,4 @@
-import type { Question, GameState } from './game'
+import type { Question, GameState } from '../models/game'
 
 interface HeaderProps {
   state: GameState;
