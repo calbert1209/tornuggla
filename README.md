@@ -20,31 +20,37 @@ A game to help children memorize simple facts like addition, subtraction or mult
 ### Getting Started
 
 1. Install dependencies:
+
 ```bash
 npm install
 ```
 
-2. Run development server:
+1. Run development server:
+
 ```bash
 npm run dev
 ```
 
-3. Run tests:
+1. Run tests:
+
 ```bash
 npm test
 ```
 
-4. Run tests with UI:
+1. Run tests with UI:
+
 ```bash
 npm run test:ui
 ```
 
-5. Build for production:
+1. Build for production:
+
 ```bash
 npm run build
 ```
 
-6. Preview production build:
+1. Preview production build:
+
 ```bash
 npm run preview
 ```
@@ -52,6 +58,7 @@ npm run preview
 ## Game Play
 
 Each session of the game is a sequence of 10 questions that competitors need to answer. In response to each student answer, the teacher can click:
+
 - **NG (x)** - if the answer was incorrect or not fast enough
 - **OK (c)** - if the answer was correct and timely
 
@@ -79,7 +86,7 @@ The site will be available at: `https://[your-username].github.io/tornuggla/`
 
 ## Project Structure
 
-```
+```text
 src/
   ├── components.tsx          # Preact components (Header, Stage, Footer)
   ├── game.ts                 # Game state management and retry logic

@@ -61,7 +61,7 @@ describe('Game State', () => {
 
   it('should handle ng correctly', () => {
     state.next()
-    const firstQuestion = state.getCurrent()
+    state.getCurrent()
     state.ng()
 
     expect(state.getCount()).toBe(0)

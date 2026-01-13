@@ -1,4 +1,3 @@
-import { h } from 'preact'
 import type { Question, GameState } from './game'
 
 interface HeaderProps {
