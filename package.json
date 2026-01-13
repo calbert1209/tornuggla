@@ -1,17 +1,25 @@
 {
   "name": "tornuggla",
   "version": "1.0.0",
-  "description": "",
-  "main": "poc/index.js",
+  "description": "A game to help children memorize simple facts",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "lite-server"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "preact": "^10.19.6"
+  },
   "devDependencies": {
+    "@preact/preset-vite": "^2.7.2",
+    "@vitest/ui": "^1.1.0",
     "dotenv": "^16.4.1",
-    "lite-server": "^2.6.1"
+    "jsdom": "^27.4.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "vitest": "^1.1.0"
   }
 }
