@@ -6,30 +6,33 @@ interface HeaderProps {
 }
 
 export function Header({ state, showCharacter }: HeaderProps) {
-  const assetBase = import.meta.env.BASE_URL
-  const characters = Array.from({ length: state.count }, (_, i) => (
-    <img
-      key={i}
-      src={
-        showCharacter
-          ? `${assetBase}assets/pikachu.gif`
-          : `${assetBase}assets/pikachu-static.gif`
-      }
-      alt="pikachu"
-      class="character"
-    />
-  ))
 
   return (
     <header>
       <div class="header-content">
         <div class="count">{state.count}</div>
-        {characters}
+        {Array.from({ length: state.count }, (_, i) => (
+          <CharacterImage key={i} animate={showCharacter} />
+        ))}
       </div>
     </header>
   )
 }
 
+
+const CharacterImage = ({ animate }: { animate: boolean }) => {
+  const assetBase = import.meta.env.BASE_URL
+  return (
+    <img
+      src={
+        animate
+          ? `${assetBase}assets/pikachu.gif`
+          : `${assetBase}assets/pikachu-static.gif`
+      }
+      alt="pikachu"
+      class="character"
+    />);
+}
 interface StageProps {
   question: Question;
   operator: '+' | '-';
