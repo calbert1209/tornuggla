@@ -1,0 +1,140 @@
+:root {
+  font-size: 16px;
+  font-family: 'KoHo', 'Segoe UI', sans-serif;
+  --main-color: #ccc;
+  --dark: black;
+  --light: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  height: 100%;
+  width: 100%;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vh 10vw;
+  min-height: calc(4vh + 60px);
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.count {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.character {
+  width: 60px;
+  height: 60px;
+}
+
+.stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+  background-color: var(--main-color);
+  padding: 5vh 10vw;
+  flex: 1;
+}
+
+.number, .operator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light);
+  font-weight: 700;
+}
+
+.number {
+  font-size: 14rem;
+  height: 40vh;
+  width: 30vw;
+}
+
+.operator {
+  font-size: 8rem;
+  height: 15vw;
+  width: 15vw;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: 2px solid var(--dark);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button.primary {
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+button.primary:hover {
+  background-color: #333;
+}
+
+button.secondary {
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+button.secondary:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .number {
+    font-size: 6rem;
+    height: 30vh;
+    width: 40vw;
+  }
+
+  .operator {
+    font-size: 4rem;
+  }
+
+  button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
