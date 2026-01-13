@@ -5,8 +5,7 @@ interface HeaderProps {
   showCharacter: boolean;
 }
 
-export function Header({ state, showCharacter }: HeaderProps) {
-
+export const Header = ({ state, showCharacter }: HeaderProps) => {
   return (
     <header>
       <div class="header-content">
@@ -38,7 +37,7 @@ interface StageProps {
   operator: '+' | '-';
 }
 
-export function Stage({ question, operator }: StageProps) {
+export const Stage = ({ question, operator }: StageProps) => {
   return (
     <main class="stage">
       <div class="number left">{question.a}</div>
@@ -55,7 +54,7 @@ interface FooterProps {
   onSwap: () => void;
 }
 
-export function Footer({ onNG, onOK, onReset, onSwap }: FooterProps) {
+export const Footer = ({ onNG, onOK, onReset, onSwap }: FooterProps) => {
   return (
     <footer>
       <button class="primary" onClick={onNG}>

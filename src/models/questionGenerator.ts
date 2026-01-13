@@ -1,6 +1,6 @@
 import type { Question } from './game'
 
-export function generateTwoDigitQuestion(): Question {
+export const generateTwoDigitQuestion = (): Question => {
   const values = [
     Math.floor(Math.random() * 6),
     Math.floor(Math.random() * 6),
@@ -9,6 +9,5 @@ export function generateTwoDigitQuestion(): Question {
   return { a, b }
 }
 
-export function generateOperator(): '+' | '-' {
-  return Math.random() > 0.5 ? '+' : '-'
-}
+export const generateOperator = (): '+' | '-' =>
+  Math.random() > 0.5 ? '+' : '-'
