@@ -88,19 +88,69 @@ The site will be available at: `https://[your-username].github.io/tornuggla/`
 
 ```text
 src/
-  ├── components.tsx          # Preact components (Header, Stage, Footer)
-  ├── game.ts                 # Game state management and retry logic
-  ├── main.tsx                # Application entry point
-  ├── questionGenerator.ts    # Question generation logic
-  └── styles.css              # All CSS styling
+  ├── components/
+  │   ├── main.tsx                # Application entry point
+  │   └── components.tsx          # Preact components (Header, Stage, Footer)
+  ├── models/
+  │   ├── game.ts                 # Game state management and retry logic
+  │   └── questionGenerator.ts    # Question generation logic
+  ├── styles.css                  # All CSS styling
+  └── vite-env.d.ts               # Vite type definitions
 
 test/
-  ├── game.test.ts            # Tests for game logic
-  └── questionGenerator.test.ts # Tests for question generation
+  ├── game.test.ts                # Tests for game logic
+  └── questionGenerator.test.ts   # Tests for question generation
+
+public/
+  └── assets/                     # Game assets (GIFs, images)
 
 poc/
-  └── ...                     # Original proof of concept files
+  └── ...                         # Original proof of concept files
+
+.github/
+  └── workflows/
+      └── deploy.yml              # GitHub Actions workflow for automatic deployment
 ```
+
+## Code Style
+
+- All functions use arrow function syntax
+- TypeScript with strict mode enabled
+- Preact hooks for state management
+
+## Testing
+
+The project includes comprehensive unit tests for core game logic:
+
+- `State` class - game state management and question progression
+- `Retries` class - retry queue management
+- Question generation functions
+
+Run tests with:
+
+```bash
+npm test                # Run tests in watch mode
+npm test -- --run       # Run tests once
+npm run test:ui         # Run tests with visual UI
+```
+
+## Git Workflow
+
+This project uses feature branches for development:
+
+1. Create a new branch: `git checkout -b feature-name`
+2. Make your changes and commit: `git commit -m "description"`
+3. Push to remote: `git push -u origin feature-name`
+4. Open a pull request on GitHub
+
+## Contributing
+
+When contributing:
+
+- Ensure all tests pass: `npm test -- --run`
+- Build the project: `npm run build`
+- Follow the existing code style (arrow functions, TypeScript strict mode)
+- Update tests if you modify game logic
 
 ## License
 
