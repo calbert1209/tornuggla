@@ -37,7 +37,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 4px;
 }
 
 .count {
@@ -46,8 +46,9 @@ header {
 }
 
 .character {
-  width: 60px;
   height: 60px;
+  width: auto;
+  object-fit: contain;
 }
 
 .stage {

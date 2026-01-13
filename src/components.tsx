@@ -6,10 +6,15 @@ interface HeaderProps {
 }
 
 export function Header({ state, showCharacter }: HeaderProps) {
+  const assetBase = import.meta.env.BASE_URL
   const characters = Array.from({ length: state.count }, (_, i) => (
     <img
       key={i}
-      src={showCharacter ? '/assets/pikachu.gif' : '/assets/pikachu-static.gif'}
+      src={
+        showCharacter
+          ? `${assetBase}assets/pikachu.gif`
+          : `${assetBase}assets/pikachu-static.gif`
+      }
       alt="pikachu"
       class="character"
     />

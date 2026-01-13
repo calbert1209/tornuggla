@@ -17,7 +17,8 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "jsxImportSource": "preact",
+    "types": ["vite/client"]
   },
   "include": ["src", "test"],
   "references": [{ "path": "./tsconfig.node.json" }]
