@@ -11,35 +11,35 @@ export interface GameState {
 }
 
 export class Retries {
-  #list: Array<{ at: number; question: Question }> = [];
+  private list: Array<{ at: number; question: Question }> = [];
 
   add(index: number, question: Question): void {
-    this.#list.push({ at: index + 2, question });
+    this.list.push({ at: index + 2, question });
   }
 
   hasRetry(index: number): boolean {
-    return this.#list[0]?.at === index;
+    return this.list[0]?.at === index;
   }
 
   shift(): Question | undefined {
-    if (this.#list.length < 1) return undefined;
-    const { question } = this.#list.shift()!;
+    if (this.list.length < 1) return undefined;
+    const { question } = this.list.shift()!;
     return question;
   }
 
   reset(): void {
-    this.#list = [];
+    this.list = [];
   }
 }
 
 export class State {
-  #max: number;
-  #retries: Retries;
-  #fn: () => Question;
-  #current: Question | undefined;
-  #done: Question[] = [];
-  #index: number = 0;
-  #onChange?: (state: GameState) => void;
+  private max: number;
+  private retries: Retries;
+  private fn: () => Question;
+  private current: Question | undefined;
+  private done: Question[] = [];
+  private index: number = 0;
+  private onChange?: (state: GameState) => void;
 
   constructor(
     max: number,
@@ -47,75 +47,75 @@ export class State {
     fn: () => Question,
     onChange?: (state: GameState) => void
   ) {
-    this.#max = max;
-    this.#retries = retries;
-    this.#fn = fn;
-    this.#onChange = onChange;
+    this.max = max;
+    this.retries = retries;
+    this.fn = fn;
+    this.onChange = onChange;
   }
 
-  #report(): void {
-    this.#onChange?.({
-      index: this.#index,
-      current: this.#current!,
-      count: this.#done.length,
-      isDone: this.#done.length >= this.#max,
+  private report(): void {
+    this.onChange?.({
+      index: this.index,
+      current: this.current!,
+      count: this.done.length,
+      isDone: this.done.length >= this.max,
     });
   }
 
-  #setCurrent(next: Question): void {
-    this.#current = next;
-    this.#report();
+  private setCurrent(next: Question): void {
+    this.current = next;
+    this.report();
   }
 
-  #cloneCurrent(): Question {
-    if (!this.#current) throw new Error('Current question is undefined');
-    return { ...this.#current };
+  private cloneCurrent(): Question {
+    if (!this.current) throw new Error("Current question is undefined");
+    return { ...this.current };
   }
 
   next(): void {
-    if (this.#done.length >= this.#max) {
-      this.#report();
+    if (this.done.length >= this.max) {
+      this.report();
       return;
     }
 
-    if (this.#retries.hasRetry(this.#index)) {
-      const retry = this.#retries.shift();
-      if (retry) this.#setCurrent(retry);
+    if (this.retries.hasRetry(this.index)) {
+      const retry = this.retries.shift();
+      if (retry) this.setCurrent(retry);
     } else {
-      this.#setCurrent(this.#fn());
+      this.setCurrent(this.fn());
     }
 
-    this.#index += 1;
+    this.index += 1;
   }
 
   ok(): void {
-    if (this.#done.length < this.#max) {
-      this.#done.push(this.#cloneCurrent());
+    if (this.done.length < this.max) {
+      this.done.push(this.cloneCurrent());
     }
     this.next();
   }
 
   ng(): void {
-    this.#retries.add(this.#index, this.#cloneCurrent());
+    this.retries.add(this.index, this.cloneCurrent());
     this.next();
   }
 
   reset(): void {
-    this.#current = undefined;
-    this.#done = [];
-    this.#index = 0;
-    this.#retries.reset();
+    this.current = undefined;
+    this.done = [];
+    this.index = 0;
+    this.retries.reset();
   }
 
   getCurrent(): Question | undefined {
-    return this.#current;
+    return this.current;
   }
 
   getCount(): number {
-    return this.#done.length;
+    return this.done.length;
   }
 
   isDone(): boolean {
-    return this.#done.length >= this.#max;
+    return this.done.length >= this.max;
   }
 }
