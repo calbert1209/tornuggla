@@ -1,43 +1,42 @@
-import { useState, useEffect } from 'preact/hooks'
-import { State, Retries } from '../models/game'
-import { generateTwoDigitQuestion } from '../models/questionGenerator'
-import { Header, Stage, Footer } from './components'
-import './styles.css'
+import { useState, useEffect } from "preact/hooks";
+import { State, Retries } from "../models/game";
+import { generateTwoDigitQuestion } from "../models/questionGenerator";
+import { Header, Stage, Footer } from "./components";
 
 export const App = () => {
-  const [operator, setOperator] = useState<'+' | '-'>('+')
-  const [gameState, setGameState] = useState<any>(null)
+  const [operator, setOperator] = useState<"+" | "-">("+");
+  const [gameState, setGameState] = useState<any>(null);
 
   const gameLogic = useState(() => {
-    return new State(10, new Retries(), generateTwoDigitQuestion, setGameState)
-  })[0]
+    return new State(10, new Retries(), generateTwoDigitQuestion, setGameState);
+  })[0];
 
   useEffect(() => {
-    gameLogic.next()
-  }, [])
+    gameLogic.next();
+  }, []);
 
-  const handleNG = () => gameLogic.ng()
-  const handleOK = () => gameLogic.ok()
+  const handleNG = () => gameLogic.ng();
+  const handleOK = () => gameLogic.ok();
   const handleReset = () => {
-    gameLogic.reset()
-    gameLogic.next()
-  }
-  const handleSwap = () => setOperator(operator === '+' ? '-' : '+')
+    gameLogic.reset();
+    gameLogic.next();
+  };
+  const handleSwap = () => setOperator(operator === "+" ? "-" : "+");
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'x') handleNG()
-    if (e.key === 'c') handleOK()
-    if (e.key === 'r') handleReset()
-    if (e.key === '-') handleSwap()
-  }
+    if (e.key === "x") handleNG();
+    if (e.key === "c") handleOK();
+    if (e.key === "r") handleReset();
+    if (e.key === "-") handleSwap();
+  };
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [operator])
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [operator]);
 
   if (!gameState || !gameState.current) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   return (
@@ -51,5 +50,5 @@ export const App = () => {
         onSwap={handleSwap}
       />
     </div>
-  )
-}
+  );
+};
